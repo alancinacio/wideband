@@ -1,11 +1,22 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute', 'firebase']);
+angular
+    .module('app', ['ngRoute', 'firebase'])
+    .config(mainConfig);
 
-app.config(function ($routeProvider) {
+mainConfig.$inject = [$routeProvider, $firebaseRefProvider];
+
+
+function routeConfig($routeProvider, $firebaseRefProvider) {
     $routeProvider
-        .when('/home', {
-            template: '<h1>angular init</h1>'
+        .when('/', {
+            template: '<home></home>',
+            title: 'home'
         })
-        .otherwise('/home');;
-});
+        .otherwise({
+            redirectTo: '/' 
+        });
+        
+    $firebaseRefProvider
+        .registerUrl('https://wideband2.firebaseio.com/');
+};

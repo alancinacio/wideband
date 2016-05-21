@@ -4,7 +4,7 @@
   "description": "A no non-sense poker planning application",
   "main": "index.js",
   "scripts": {
-    "start": "http-server ./app -d false"
+    "start": "http-server ./app -a localhost -p 8000 -c-1 -d false"
   },
   "repository": {
     "type": "git",
