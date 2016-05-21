@@ -1,0 +1,22 @@
+{
+  "name": "wideband",
+  "version": "1.0.0",
+  "description": "A no non-sense poker planning application",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kerux2222/wideband.git"
+  },
+  "author": "alan.c.inacio@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kerux2222/wideband/issues"
+  },
+  "homepage": "https://github.com/kerux2222/wideband#readme",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}
