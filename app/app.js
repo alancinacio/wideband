@@ -4,10 +4,9 @@ angular
     .module('app', ['ngRoute', 'firebase'])
     .config(mainConfig);
 
-mainConfig.$inject = [$routeProvider, $firebaseRefProvider];
+mainConfig.$inject = ['$routeProvider', '$firebaseRefProvider'];
 
-
-function routeConfig($routeProvider, $firebaseRefProvider) {
+function mainConfig($routeProvider, $firebaseRefProvider) {
     $routeProvider
         .when('/', {
             template: '<home></home>',
