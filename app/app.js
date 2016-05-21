@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('app', ['ngRoute', 'firebase'])
+    .module('app', ['ngRoute', 'firebase', 'ngMaterial'])
     .config(mainConfig);
 
 mainConfig.$inject = ['$routeProvider', '$firebaseRefProvider'];
