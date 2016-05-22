@@ -9,13 +9,25 @@ mainConfig.$inject = ['$routeProvider', '$firebaseRefProvider'];
 function mainConfig($routeProvider, $firebaseRefProvider) {
     $routeProvider
         .when('/', {
-            template: '<home></home>',
-            title: 'home'
+            template: '<home user="$resolve.register" sessions="$resolve.sessions"></home>',
+            title: 'home',
+            resolve: {
+                register: function ($firebaseAuthService) {
+                    return $firebaseAuthService.$authAnonymously()
+                        .then(function (authData) {
+                            return authData.uid;
+                        });
+                },
+                sessions: function (fbRef, $firebaseArray) {
+                    var query = fbRef.getSessionsRef().orderByChild("name");
+                    return $firebaseArray(query).$loaded();
+                }
+            }
         })
         .otherwise({
-            redirectTo: '/' 
+            redirectTo: '/'
         });
-        
+
     $firebaseRefProvider
         .registerUrl('https://wideband2.firebaseio.com/');
 };

@@ -1,19 +1,23 @@
 angular.module('app').component('home', {
-   templateUrl: '/home/home.html',
-   controller: welcomeController
+    templateUrl: '/home/home.html',
+    bindings: {
+        user: "=",
+        sessions: "="
+    },
+    controller: welcomeController
 });
 
-welcomeController.$inject = ['$firebaseAuthService', '$location'];
+welcomeController.$inject = ['$location'];
 
-function welcomeController($firebaseAuthService, $location) {
-    this.annonLogin = function() {
-           $firebaseAuthService.$authAnonymously()
-               .then((function() {
-                   console.log('logged in anonymously', this.sessionId);
-               }).bind(this))
-               .catch(function() {
-                   console.log('nope');
-               })
-           
-       }
+function welcomeController($location) {
+    
+    this.createSession = function () {
+        var session = {
+            name: "test",
+            host: this.user,
+            players: []
+        }
+        this.sessions.$add(session);
+    }
+    
 }
